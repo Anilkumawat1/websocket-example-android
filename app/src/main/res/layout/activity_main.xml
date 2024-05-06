@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity"
+    android:layout_marginTop="20dp">
+
+    <!-- EditText for Name -->
+    <EditText
+        android:id="@+id/editTextName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Enter Name"
+        android:inputType="text" />
+
+    <!-- Connect Button -->
+    <Button
+        android:id="@+id/buttonConnect"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/editTextName"
+        android:layout_marginTop="16dp"
+        android:text="Connect" />
+
+    <!-- EditText for Message -->
+    <EditText
+        android:id="@+id/editTextFname"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/buttonConnect"
+        android:layout_marginTop="16dp"
+        android:hint="Enter Name"
+        android:inputType="text" />
+    <EditText
+        android:id="@+id/editTextMessage"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/editTextFname"
+        android:layout_marginTop="16dp"
+        android:hint="Enter Message"
+        android:inputType="text" />
+
+    <!-- Send Button -->
+    <Button
+        android:id="@+id/buttonSend"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/editTextMessage"
+        android:layout_marginTop="16dp"
+        android:text="Send" />
+
+    <!-- TextView to Display Message -->
+    <TextView
+        android:id="@+id/textViewMessage"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/buttonSend"
+        android:layout_marginTop="16dp"
+        android:text="Received Message will be display"
+        android:textSize="16sp" />
+
+</RelativeLayout>
