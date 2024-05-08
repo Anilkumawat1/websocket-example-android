@@ -1,0 +1,38 @@
+{
+  "project_info": {
+    "project_number": "513966894814",
+    "project_id": "fcmn-b8028",
+    "storage_bucket": "fcmn-b8028.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:513966894814:android:963f8544f5ce91b439dc4f",
+        "android_client_info": {
+          "package_name": "com.anilkumawat.websocket"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "513966894814-3ipidksvkg327iu8623ukj0eri42ea71.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.anilkumawat.websocket",
+            "certificate_hash": "2f98676d2e7cfc034c9032c15f13c43600c8d42a"
+          }
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAVmgoUTUxiYQSuS0Ukzs_GGILNtGzM86A"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

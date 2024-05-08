@@ -1,16 +1,24 @@
 package com.anilkumawat.websocket
 
+import android.content.ContentValues.TAG
 import android.os.Bundle
+import android.util.Log
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
+import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import com.google.firebase.messaging.FirebaseMessaging
 import com.google.gson.Gson
 import io.socket.client.IO
 import io.socket.client.Socket
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.tasks.await
 
 class MainActivity : AppCompatActivity() {
 
@@ -22,9 +30,28 @@ class MainActivity : AppCompatActivity() {
     private lateinit var textViewMessage: TextView
     lateinit var mSocket : Socket
     val gson: Gson = Gson()
+    var token1 = ""
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+
+        FirebaseMessaging.getInstance().token
+            .addOnCompleteListener { task ->
+                if (task.isSuccessful) {
+                    val token = task.result
+                    Log.d(TAG, "Token: $token")
+                     token1 = token
+                    Toast.makeText(this, token, Toast.LENGTH_SHORT).show()
+
+                } else {
+                    Log.w(TAG, "Fetching FCM registration token failed", task.exception)
+                    Toast.makeText(this, task.exception.toString(), Toast.LENGTH_SHORT).show()
+
+                }
+            }
+
+
         SocketHandler.setSocket()
 
         mSocket=SocketHandler.getSocket()
@@ -54,7 +81,9 @@ class MainActivity : AppCompatActivity() {
         buttonConnect.setOnClickListener {
             // Perform action when Connect button is clicked
             val name = editTextName.text.toString()
-            mSocket.emit("setup",name)
+            val setupData = setupData(name,token1)
+            val jsonPayload = gson.toJson(setupData)
+            mSocket.emit("setup",jsonPayload)
             // Your logic for connecting
         }
 
