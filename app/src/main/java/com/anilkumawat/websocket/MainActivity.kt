@@ -47,7 +47,6 @@ class MainActivity : AppCompatActivity() {
                 } else {
                     Log.w(TAG, "Fetching FCM registration token failed", task.exception)
                     Toast.makeText(this, task.exception.toString(), Toast.LENGTH_SHORT).show()
-
                 }
             }
 

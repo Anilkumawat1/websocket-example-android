@@ -28,6 +28,7 @@ class MyFirebaseMessagingService : FirebaseMessagingService() {
     // title and
     // body from the message passed in FCM
     override fun onMessageReceived(remoteMessage: RemoteMessage) {
+
         // First case when notifications are received via
         // data event
         // Here, 'title' and 'message' are the assumed names
@@ -42,12 +43,13 @@ class MyFirebaseMessagingService : FirebaseMessagingService() {
 
         // Second case when notification payload is
         // received.
-        if (remoteMessage.getNotification() != null) {
+        if (remoteMessage.notification!=null) {
+            Log.d("messs","anol")
             // Since the notification is received directly from
             // FCM, the title and the body can be fetched
             // directly as below.
-            remoteMessage.getNotification()!!.getTitle()?.let {
-                remoteMessage.getNotification()!!.getBody()?.let { it1 ->
+            remoteMessage.notification!!.title?.let {
+                remoteMessage.notification!!.body?.let { it1 ->
                     showNotification(
                         it,
                         it1
@@ -64,7 +66,7 @@ class MyFirebaseMessagingService : FirebaseMessagingService() {
         message: String
     ): RemoteViews {
         val remoteViews = RemoteViews(
-            ApplicationProvider.getApplicationContext<Context>().getPackageName(),
+            getApplicationContext().packageName,
             R.layout.notification
         )
         remoteViews.setTextViewText(R.id.titleTextView, title)
@@ -98,8 +100,9 @@ class MyFirebaseMessagingService : FirebaseMessagingService() {
 
         // Create a Builder object using NotificationCompat
         // class. This will allow control over all the flags
+         // var builder : NotificationCompat.Builder = NotificationCompat.Builder(ApplicationProvider.getApplicationContext<Context>(),channel_id)
         var builder: NotificationCompat.Builder = NotificationCompat.Builder(
-            ApplicationProvider.getApplicationContext<Context>(),
+            getApplicationContext(),
             channel_id
         )
             .setSmallIcon(R.drawable.ic_launcher_foreground)
@@ -112,13 +115,14 @@ class MyFirebaseMessagingService : FirebaseMessagingService() {
             )
             .setOnlyAlertOnce(true)
             .setContentIntent(pendingIntent)
+            .setContent(getCustomDesign(title,message))
 
-        // A customized design for the notification can be
-        // set only for Android versions 4.1 and above. Thus
-        // condition for the same is checked here.
-        builder = builder.setContent(
-            getCustomDesign(title, message)
-        )
+//        // A customized design for the notification can be
+//        // set only for Android versions 4.1 and above. Thus
+//        // condition for the same is checked here.
+//        builder = builder.setContent(
+//            getCustomDesign(title, message)
+//        )
         // Create an object of NotificationManager class to
         // notify the
         // user of events that happen in the background.

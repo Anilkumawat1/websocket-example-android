@@ -9,9 +9,9 @@
               <option name="connection">
                 <ConnectionSetting>
                   <option name="appId" value="com.anilkumawat.websocket" />
-                  <option name="mobileSdkAppId" value="1:226572572035:android:70eee23f711aa7133f12b6" />
-                  <option name="projectId" value="pushnotification-85aae" />
-                  <option name="projectNumber" value="226572572035" />
+                  <option name="mobileSdkAppId" value="1:513966894814:android:963f8544f5ce91b439dc4f" />
+                  <option name="projectId" value="fcmn-b8028" />
+                  <option name="projectNumber" value="513966894814" />
                 </ConnectionSetting>
               </option>
               <option name="signal" value="SIGNAL_UNSPECIFIED" />
